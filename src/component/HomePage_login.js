@@ -13,7 +13,7 @@ const PostPage = () => {
           <>
             <div>{id}안녕하세요</div>
             <div onClick={() => navigate('/')}>홈 페이지로 이동하기</div>
-    </>
+           </>
     
    )
 }

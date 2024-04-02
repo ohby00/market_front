@@ -28,14 +28,6 @@ export default function JoinPage() {
         })
     }
 
-    useEffect(()=>{
-        fetch("http://localhost:8080/user/getAll")
-        .then(res=>res.json())
-        .then((result)=>{
-            setAllUser(result);
-        }
-    )
-    },[])
 
 
     const paperStyle = {padding:"50px 20px", width:600, margin:"20px auto"}

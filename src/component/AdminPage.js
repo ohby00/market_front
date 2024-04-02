@@ -7,6 +7,7 @@ import Stack from '@mui/material/Stack';
 
 export default function AdminPage() {    
     const[AllUser, setAllUser] = useState([])
+    
     useEffect(()=>{
         fetch("http://localhost:8080/user/getAll")
         .then(res=>res.json())
@@ -27,10 +28,10 @@ export default function AdminPage() {
       <h1>관리자 페이지</h1>
        {AllUser.map(user=>(
         <Paper elevation={6} style={{margin:"10px", padding:"15px"}} key={user.id}>
-            Id:{user.id}
-            UserId:{user.userId}
-            Password:{user.password}
-            Name:{user.userName}
+            Id:{user.id} , 
+            UserId:{user.userId} ,
+            Password:{user.password} ,
+            Name:{user.userName} ,
             Email:{user.userEmail}
         </Paper>
         ))
