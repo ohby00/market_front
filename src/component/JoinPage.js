@@ -85,7 +85,7 @@ export default function JoinPage() {
             onClick={handleClick}
             endIcon={<SendIcon />}
           >
-            회원가입
+            회원가힙
           </Button>
         </from>
       </Paper>
