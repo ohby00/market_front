@@ -54,7 +54,7 @@ export default function Appbar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            심리 테스트
+            market
           </Typography>
           {auth && (
             <div>
