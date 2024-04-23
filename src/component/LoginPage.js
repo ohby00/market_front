@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import TextField from '@mui/material/TextField';
 import { Container, Paper, Button } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
-import Stack from '@mui/material/Stack';
 
 export default function LoginPage() {
     const[userId, setUserId] = useState('')
@@ -13,7 +11,7 @@ export default function LoginPage() {
         e.preventDefault()
         const user = {userId, password}
         console.log(user)
-        fetch("http://localhost:8080/user/add",{
+        fetch("http://localhost:8080/user/login",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(user)
