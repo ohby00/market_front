@@ -2,24 +2,28 @@ import React, {useEffect, useState} from 'react';
 import TextField from '@mui/material/TextField';
 import { Container, Paper, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
-    const[userId, setUserId] = useState('')
+    const[email, setEmail] = useState('')
     const[password, setPassword] = useState('')
+    const navigate = useNavigate();
 
     const handleClick=(e)=>{
         e.preventDefault()
-        const user = {userId, password}
+        const user = {email, password}
         console.log(user)
-        fetch("http://localhost:8080/user/login",{
+        fetch("http://localhost:8080/jwt/login",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(user)
         }).then(()=>{
-            if(user)
-            alert("회원가입에 성공하셨습니다.")
-            else
-            alert("실패하였습니다")
+            if(user){
+            alert("로그인 성공.")
+            navigate('/')
+            }else{
+            alert("로그인 실패.")
+        }
         })
     }
 
@@ -32,15 +36,15 @@ export default function LoginPage() {
         <from>
             <h1> 로그인 </h1>
       <TextField id="outlined-basic" style={boxStyle} label="아이디" variant="outlined" fullWidth
-      value={userId} 
-      onChange={(e)=>setUserId(e.target.value)}/>
+      value={email} 
+      onChange={(e)=>setEmail(e.target.value)}/>
 
       <TextField id="outlined-basic" style={boxStyle} label="비밀번호" variant="outlined" fullWidth
       value={password} 
       onChange={(e)=>setPassword(e.target.value)}/>
       
       <Button variant="contained" onClick={handleClick} endIcon={<SendIcon />}>로그인</Button>
-
+      
         </from>
         </Paper>
       </Container>

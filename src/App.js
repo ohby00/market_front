@@ -1,21 +1,18 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import AppBar from './component/Appbar';
-import HomePage from './component/HomePage';
-import HomePage_login from './component/HomePage_login';
-import LoginPage from './component/LoginPage';
-import JoinPage from './component/JoinPage';
-import AdminPage from './component/AdminPage';
+import AppBar from './component/Header/Appbar';
+import Home from './component/pages/Home';
+import Login from './component/pages/Login';
+import Join from './component/pages/Join';
 
 function App() {
   return (
     <div>
       <AppBar/>
       <Routes>
-        <Route path="/" element={<HomePage />}/>
-        <Route path="/login" element={<LoginPage/>}/>
-        <Route path="/register" element={<JoinPage/>}/>
-        <Route path="/admin" element={<AdminPage/>}/>
+        <Route path="/" element={<Home />}/>
+        <Route path="/login" element={<Login />}/>
+        <Route path="/register" element={<Join />}/>
       </Routes>
     </div>
   );
