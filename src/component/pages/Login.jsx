@@ -3,34 +3,26 @@ import TextField from '@mui/material/TextField';
 import { Container, Paper, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router-dom';
+import { login } from '../apis/login';
 
 export default function LoginPage() {
+  
     const[email, setEmail] = useState('')
     const[password, setPassword] = useState('')
     const navigate = useNavigate();
 
-    const handleClick=(e)=>{
-        e.preventDefault()
-        const user = {email, password}
-        console.log(user)
-        fetch("http://localhost:8080/jwt/login",{
-            method:"POST",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify(user)
-        }).then(()=>{
-            if(user){
-            alert("로그인 성공.")
-            navigate('/')
-            }else{
-            alert("로그인 실패.")
-        }
-        })
+    const onClick = async () => {
+        const result = await login(email, password);
+        const {accessToken, refreshToken} = result;
+        localStorage.setItem('access', accessToken);
+        localStorage.setItem('refresh', refreshToken);
+        navigate('/mypage');
     }
 
     const paperStyle = {padding:"50px 20px", width:600, margin:"20px auto"}
     const boxStyle = {padding:"5px 5px",  margin:"5px auto"}
+
   return (
-    
     <Container>
         <Paper elevation={3} style={paperStyle}>
         <from>
@@ -43,7 +35,7 @@ export default function LoginPage() {
       value={password} 
       onChange={(e)=>setPassword(e.target.value)}/>
       
-      <Button variant="contained" onClick={handleClick} endIcon={<SendIcon />}>로그인</Button>
+      <Button variant="contained" onClick={onClick} endIcon={<SendIcon />}>로그인</Button>
       
         </from>
         </Paper>
