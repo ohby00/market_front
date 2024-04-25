@@ -4,12 +4,11 @@ import { Container, Paper, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Code } from '@mui/icons-material';
 
 export default function JoinPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [verificationCode, setVerificationCode] = useState('');
@@ -54,7 +53,7 @@ export default function JoinPage() {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    const user = { email, password, username, phone, address };
+    const user = { email, password, name, phone, address };
     try {
       const response = await axios.post('http://localhost:8080/user/save', user);
       console.log(response.data);
@@ -130,8 +129,8 @@ export default function JoinPage() {
             label="이름"
             variant="outlined"
             fullWidth
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
 
           <TextField

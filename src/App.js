@@ -6,6 +6,7 @@ import Login from './component/pages/Login';
 import Join from './component/pages/Join';
 import User from './component/pages/User';
 import MyPage from './component/pages/MyPage';
+import InfoFix from './component/pages/InfoFix';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
 
         <Route path="/user" element={<User />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/infofix" element={<InfoFix />} />
 
      </Routes>
      </div>
