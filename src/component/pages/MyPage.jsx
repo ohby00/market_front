@@ -5,13 +5,26 @@ import { Container, Paper, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useParams, useNavigate } from 'react-router-dom';
 
-const Mypage = () => {
+const Mypage = ({ setIsLoggedIn }) => { // setIsLoggedIn 추가
     const [data, setData] = useState();
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     const paperStyle = { padding: '50px 20px', width: 600, margin: '20px auto' };
     const boxStyle = { padding: '5px 5px', margin: '5 auto' };
+
+    const handleLogout = () => {
+        // 로컬 스토리지에서 토큰 삭제
+        localStorage.removeItem('access');
+        localStorage.removeItem('refresh');
+    
+        // isLoggedIn 상태를 false로 변경
+        setIsLoggedIn(false);
+    
+        // 홈으로 리디렉션
+        navigate('/');
+      };
+    
 
     useEffect(() => {
         getMyPage().then((res) => {
@@ -31,8 +44,10 @@ const Mypage = () => {
                     <TextField id="name" style={boxStyle} label="이름" variant="outlined" fullWidth value={data?.name || ''} disabled={!data.name} />
                     <TextField id="phone" style={boxStyle} label="전화번호" variant="outlined" fullWidth value={data?.phone || ''} disabled={!data.phone} />
                     <TextField id="address" style={boxStyle} label="주소" variant="outlined" fullWidth value={data?.address || ''} disabled={!data.address} />
-                    <Button variant="contained" onClick={() => navigate('/infofix')} endIcon={<SendIcon />}>개인정보 변경</Button>
                     <Button variant="contained" onClick={() => navigate('/')} endIcon={<SendIcon />}>홈페이지</Button>
+                    <Button variant="contained" onClick={() => navigate('/infofix')} endIcon={<SendIcon />}>개인정보 변경</Button>
+                    <Button variant="contained" color="success" onClick={handleLogout}>로그아웃</Button>
+                 
                 </form>
             </Paper>
         </Container>
