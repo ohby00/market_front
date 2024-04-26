@@ -16,7 +16,7 @@ export default function LoginPage() {
         const {accessToken, refreshToken} = result;
         localStorage.setItem('access', accessToken);
         localStorage.setItem('refresh', refreshToken);
-        navigate('/mypage');
+        navigate('/');
     }
 
     const paperStyle = {padding:"50px 20px", width:600, margin:"20px auto"}
@@ -36,7 +36,7 @@ export default function LoginPage() {
       onChange={(e)=>setPassword(e.target.value)}/>
       
       <Button variant="contained" onClick={onClick} endIcon={<SendIcon />}>로그인</Button>
-      
+      <Button variant="contained" onClick={() => navigate('/register')} endIcon={<SendIcon />}>회원가입</Button>
         </from>
         </Paper>
       </Container>
