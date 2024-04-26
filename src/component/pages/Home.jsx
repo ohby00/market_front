@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function HomePage({ isLoggedIn }) {
   const navigate = useNavigate();
-  const paperStyle = { padding: "50px 20px", width: 600, margin: "20px auto" };
+  const paperStyle = { padding: "50px 20px", width: 1000, margin: "20px auto" };
   const imageStyle = { display: "block", margin: "0 auto 20px", width: "50%" }; // 이미지 스타일 추가
 
   return (

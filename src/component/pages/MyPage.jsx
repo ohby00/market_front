@@ -45,9 +45,10 @@ const Mypage = ({ setIsLoggedIn }) => { // setIsLoggedIn 추가
                     <TextField id="phone" style={boxStyle} label="전화번호" variant="outlined" fullWidth value={data?.phone || ''} disabled={!data.phone} />
                     <TextField id="address" style={boxStyle} label="주소" variant="outlined" fullWidth value={data?.address || ''} disabled={!data.address} />
                     <Button variant="contained" onClick={() => navigate('/')} endIcon={<SendIcon />}>홈페이지</Button>
+                    <Button variant="contained" onClick={() => navigate('/bucket')} endIcon={<SendIcon />}>장바구니</Button>
                     <Button variant="contained" onClick={() => navigate('/infofix')} endIcon={<SendIcon />}>개인정보 변경</Button>
                     <Button variant="contained" color="success" onClick={handleLogout}>로그아웃</Button>
-                 
+
                 </form>
             </Paper>
         </Container>
