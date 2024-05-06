@@ -4,7 +4,7 @@ import { getNewRefreshToken } from "./refresh";
 export const getMyPage = async () => {
     const access = localStorage.getItem('access');
     try {
-        const result = await axios.get('http://localhost:8080/jwt/page',{
+        const result = await axios.get('http://localhost:8000/jwt/page',{
             headers:{
                 Authorization: access,
             },

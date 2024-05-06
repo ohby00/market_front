@@ -23,7 +23,7 @@ export default function JoinPage() {
     }
 
     try {
-      const response = await axios.post('http://localhost:8080/user/send', { email });
+      const response = await axios.post('http://localhost:8000/user/send', { email });
       console.log(response.data)
       alert('이메일을 확인하여 인증 코드를 입력해주세요.');
     } catch (error) {
@@ -41,7 +41,7 @@ export default function JoinPage() {
     const verifyData = { email, verificationCode };
     const config = {
       method: 'post',
-      url: 'http://localhost:8080/user/checkEmail',
+      url: 'http://localhost:8000/user/checkEmail',
       data: verifyData,
       headers: {
         'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ export default function JoinPage() {
 
     const user = { email, password, name, phone, address };
     try {
-      const response = await axios.post('http://localhost:8080/user/save', user);
+      const response = await axios.post('http://localhost:8000/user/save', user);
       console.log(response.data);
       alert('회원가입에 성공하셨습니다.');
       navigate('/');
