@@ -15,10 +15,10 @@ export default function HomePage({ isLoggedIn }) {
         <img src="/samchunpo.jpeg" alt="My Image" style={imageStyle} /> {/* 이미지 중앙 정렬 */}
         {isLoggedIn ? (
           <>
-            <Button variant="contained" onClick={() => navigate('/mypage')} endIcon={<SendIcon />}>마이페이지</Button>
+            <Button variant="contained" onClick={() => navigate('/user/myPage')} endIcon={<SendIcon />}>마이페이지</Button>
           </>
         ) : (
-          <Button variant="contained" onClick={() => navigate('/login')} endIcon={<SendIcon />}>로그인 페이지</Button>
+          <Button variant="contained" onClick={() => navigate('/user/login')} endIcon={<SendIcon />}>로그인 페이지</Button>
         )}
       </Paper>
     </Container>

@@ -55,7 +55,7 @@ export default function LoginPage({ setIsLoggedIn }) {
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button variant="contained" onClick={idClick} endIcon={<SendIcon />}>로그인</Button>
-          <Button variant="contained" onClick={() => navigate('/register')} endIcon={<SendIcon />}>회원가입</Button>
+          <Button variant="contained" onClick={() => navigate('/user/save')} endIcon={<SendIcon />}>회원가입</Button>
         </form>
       </Paper>
     </Container>

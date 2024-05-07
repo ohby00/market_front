@@ -8,6 +8,7 @@ import Login from './component/pages/Login';
 import Join from './component/pages/Join';
 import MyPage from './component/pages/MyPage'; // 수정: MyPage 컴포넌트 import 추가
 import InfoFix from './component/pages/InfoFix'; 
+import AddProduct from './component/pages/AddProduct'; 
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,11 +26,14 @@ function App() {
      <AppBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
      <Routes>
         <Route path="/" element={<Home isLoggedIn={isLoggedIn} />} />
-        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/register" element={<Join />} />
+        <Route path="/user/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/user/save" element={<Join />} />
         {/* 로그인 상태일 때만 MyPage를 렌더링하고, 그렇지 않으면 로그인 페이지로 리디렉션 */}
-        <Route path="/mypage" element={isLoggedIn ? <MyPage setIsLoggedIn={setIsLoggedIn} /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/infofix" element={<InfoFix />} />
+        <Route path="/user/myPage" element={isLoggedIn ? <MyPage setIsLoggedIn={setIsLoggedIn} /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/user/myPage/fix" element={<InfoFix />} />
+        <Route path="/AddProduct" element={<AddProduct />} />
+        
+    
      </Routes>
     </div>
   );

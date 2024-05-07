@@ -57,7 +57,7 @@ const InfoFix = () => {
                     <TextField id="name" style={{ padding: '5px 5px', margin: '5 auto' }} label="이름" variant="outlined" fullWidth value={name} onChange={handleNameChange} />
                     <TextField id="phone" style={{ padding: '5px 5px', margin: '5 auto' }} label="전화번호" variant="outlined" fullWidth value={phone} onChange={handlePhoneChange} />
                     <TextField id="address" style={{ padding: '5px 5px', margin: '5 auto' }} label="주소" variant="outlined" fullWidth value={address} onChange={handleAddressChange} />
-                    <Button variant="contained" onClick={() => navigate('/infofix')} endIcon={<SendIcon />}>변경하기</Button>
+                    <Button variant="contained" onClick={() => navigate('/user/myPage/fix')} endIcon={<SendIcon />}>변경하기</Button>
                     <Button variant="contained" onClick={() => navigate('/')} endIcon={<SendIcon />}>홈페이지</Button>
                 </form>
             </Paper>

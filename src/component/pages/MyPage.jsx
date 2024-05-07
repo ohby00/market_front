@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { getMyPage } from '../apis/mypage';
 import TextField from '@mui/material/TextField';
 import { Container, Paper, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useParams, useNavigate } from 'react-router-dom';
 
-const Mypage = ({ setIsLoggedIn }) => { // setIsLoggedIn 추가
+const Mypage = ({ setIsLoggedIn }) => {
     const [data, setData] = useState();
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
@@ -23,17 +23,19 @@ const Mypage = ({ setIsLoggedIn }) => { // setIsLoggedIn 추가
     
         // 홈으로 리디렉션
         navigate('/');
-      };
-    
+    };
 
     useEffect(() => {
         getMyPage().then((res) => {
             setData(res);
             setLoading(false);
         });
-      }, []);
+    }, []);
     
-    if(loading) return <div>로딩중</div>;
+    if (loading) return <div>로딩중</div>;
+
+    const showAddProductButton = data && data.id === 1; // data.id가 1이면 물품 추가 버튼을 보여줄지 여부
+
     return (
         <Container>
             <Paper elevation={3} style={paperStyle}>
@@ -45,10 +47,10 @@ const Mypage = ({ setIsLoggedIn }) => { // setIsLoggedIn 추가
                     <TextField id="phone" style={boxStyle} label="전화번호" variant="outlined" fullWidth value={data?.phone || ''} disabled={!data.phone} />
                     <TextField id="address" style={boxStyle} label="주소" variant="outlined" fullWidth value={data?.address || ''} disabled={!data.address} />
                     <Button variant="contained" onClick={() => navigate('/')} endIcon={<SendIcon />}>홈페이지</Button>
-                    <Button variant="contained" onClick={() => navigate('/bucket')} endIcon={<SendIcon />}>장바구니</Button>
-                    <Button variant="contained" onClick={() => navigate('/infofix')} endIcon={<SendIcon />}>개인정보 변경</Button>
+                    <Button variant="contained" onClick={() => navigate('/cart')} endIcon={<SendIcon />}>장바구니</Button>
+                    {showAddProductButton && <Button variant="contained" onClick={() => navigate('/AddProduct')} endIcon={<SendIcon />}>물품 추가</Button>}
+                    <Button variant="contained" onClick={() => navigate('/user/myPage/fix')} endIcon={<SendIcon />}>개인정보 변경</Button>
                     <Button variant="contained" color="success" onClick={handleLogout}>로그아웃</Button>
-
                 </form>
             </Paper>
         </Container>
