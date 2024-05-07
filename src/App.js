@@ -31,7 +31,7 @@ function App() {
         {/* 로그인 상태일 때만 MyPage를 렌더링하고, 그렇지 않으면 로그인 페이지로 리디렉션 */}
         <Route path="/user/myPage" element={isLoggedIn ? <MyPage setIsLoggedIn={setIsLoggedIn} /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/user/myPage/fix" element={<InfoFix />} />
-        <Route path="/AddProduct" element={<AddProduct />} />
+        <Route path="/product/add" element={<AddProduct />} />
         
     
      </Routes>
