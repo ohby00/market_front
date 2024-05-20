@@ -48,11 +48,19 @@ const Mypage = ({ setIsLoggedIn }) => {
                     <TextField id="address" style={boxStyle} label="주소" variant="outlined" fullWidth value={data?.address || ''} disabled={!data.address} />
                     <Button variant="contained" onClick={() => navigate('/')} endIcon={<SendIcon />}>홈페이지</Button>
                     <Button variant="contained" onClick={() => navigate('/cart')} endIcon={<SendIcon />}>장바구니</Button>
-                    {showAddProductButton && <Button variant="contained" onClick={() => navigate('/product/add')} endIcon={<SendIcon />}>물품 추가</Button>}
                     <Button variant="contained" onClick={() => navigate('/user/myPage/fix')} endIcon={<SendIcon />}>개인정보 변경</Button>
                     <Button variant="contained" color="success" onClick={handleLogout}>로그아웃</Button>
                 </form>
             </Paper>
+            {showAddProductButton && (
+                <Paper elevation={3} style={paperStyle}>
+                    <form>
+                        <h1>관리자용 버튼</h1>
+                        <Button variant="contained" onClick={() => navigate('/product/add')} endIcon={<SendIcon />}>물품 추가</Button>
+                        <Button variant="contained" onClick={() => navigate('/order/list')} endIcon={<SendIcon />}>모든 주문 내역</Button>
+                    </form>
+                </Paper>
+            )}
         </Container>
     );
 };
